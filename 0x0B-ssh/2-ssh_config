@@ -1,3 +1,4 @@
-Host 35.175.132.231
+Host alx
+    HostName 35.175.132.231
     IdentityFile ~/.ssh/school
     IdentitiesOnly yes

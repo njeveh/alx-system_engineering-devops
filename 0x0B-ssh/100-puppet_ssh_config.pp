@@ -1,13 +1,6 @@
-# Puppet script to setup ssh config file for my server
+# Manifest to change ssh login configuration
 
-file_line { 'IdentityFile':
-  ensure => 'present',
-  path   => '/etc/ssh/ssh_config',
-  line   => 'IdentityFile ~/.ssh/school',
-}
-
-file_line { 'PasswordAuthentication':
-  ensure => 'present',
-  path   => '/etc/ssh/ssh_config',
-  line   => 'PasswordAuthentication no',
+exec { 'ssh_login':
+  command => 'echo "PasswordAuthentication no\nIdentityFile ~/.ssh/school" >> /etc/ssh/ssh_config',
+  path    => '/usr/bin/'
 }

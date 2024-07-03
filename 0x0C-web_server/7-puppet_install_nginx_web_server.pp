@@ -1,4 +1,5 @@
 # Puppet Manifest to setup a nginx server
+include stdlib
 
 package { 'nginx':
   ensure => installed,
@@ -12,7 +13,7 @@ file_line { 'server_config':
 }
 
 file { '/var/www/html/index.html':
-  content => 'Holberton School',
+  content => 'Hello World!',
 }
 
 service { 'nginx':

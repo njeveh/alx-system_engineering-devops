@@ -3,7 +3,7 @@
 # Make sure that the '/redirect_me' url is a permanent redirect
 
 apt-get install -y nginx
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 line1="rewrite ^/redirect_me$ https://www.google.com permanent"
 line2="rewrite ^/redirect_me/$ https://www.google.com permanent"

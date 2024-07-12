@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bash script to fix my nginx server
-sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
-sudo service nginx restart
-rm /var/run/nginx.pid
+# script to link sites-enabled to sites-available and start nginx without running status
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx start
+rm /run/nginx.pid

@@ -5,8 +5,10 @@
 sudo su
 apt-get install -y nginx
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-line1="rewrite ^/redirect_me$1 https://www.google.com permanent"
-sed -i "53 i $line1" /etc/nginx/sites-available/default
+# line1="rewrite ^/redirect_me$1 https://www.google.com permanent"
+# sed -i "53 i $line1" /etc/nginx/sites-available/default
+new_string=".rules\n\t\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;\n"
+sed -i "s/.rules/$new_string/" /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/error_404.html
 #echo "Ceci n'est pas une page" > /var/www/html/error_404.html
 # segment="\n\terror_page 404 /error_404.html;\n\tlocation = /error_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"

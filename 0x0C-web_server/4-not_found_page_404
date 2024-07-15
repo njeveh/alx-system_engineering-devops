@@ -4,15 +4,9 @@
 
 sudo su
 apt-get install -y nginx
-chmod 777 /var/www/html/index.nginx-debian.html
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-chmod 755 /var/www/html/index.nginx-debian.html
-
-line1="rewrite ^/redirect_me$ https://www.google.com permanent"
-
+line1="rewrite ^/redirect_me$1 https://www.google.com permanent"
 echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
-chmod 777 /etc/nginx/sites-available/default
 sed -i "53 i $line1" /etc/nginx/sites-available/default
 sed -i '38i\error_page 404 /error_404.html;' /etc/nginx/sites-available/default
-chmod 755 /etc/nginx/sites-available/default
 service nginx start

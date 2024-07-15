@@ -5,6 +5,6 @@
 sudo su
 apt-get install -y nginx
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-line1="rewrite ^/redirect_me$ https://www.google.com permanent;"
+line1="rewrite ^/redirect_me$1 https://www.google.com permanent;"
 sed -i "53 i $line1" /etc/nginx/sites-available/default
 service nginx start

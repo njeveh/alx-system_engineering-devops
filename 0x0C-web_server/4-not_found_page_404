@@ -2,12 +2,16 @@
 # Install nginx and and make it return a page with a string 'Hello world!'
 # Make sure that the '/redirect_me' url is a permanent redirect
 
-sudo su
-apt-get install -y nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo apt-get install -y nginx
+sudo chmod 777 /var/www/html/index.nginx-debian.html
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo chmod 755 /var/www/html/index.nginx-debian.html
+sudo chmod 777 /etc/nginx/sites-available/default
 line1="rewrite ^/redirect_me$1 https://www.google.com permanent"
-sed -i "53 i $line1" /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/error_404.html
+sudo sed -i "53 i $line1" /etc/nginx/sites-available/default
+sudo echo "Ceci n'est pas une page" > /usr/share/nginx/html/error_404.html
+sudo chmod 755 /usr/share/nginx/html/error_404.html
 segment="\n\terror_page 404 /error_404.html;\n\tlocation = /error_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
-sed -i "53 i $segment"  /etc/nginx/sites-available/default
-service nginx start
+sudo sed -i "53 i $segment"  /etc/nginx/sites-available/default
+sudo chmod 755 /etc/nginx/sites-available/default
+sudo service nginx restart

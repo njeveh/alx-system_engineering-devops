@@ -6,7 +6,7 @@ sudo su
 apt-get -y update
 apt-get install -y nginx
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-line1="\\\n\trewrite ^/redirect_me$1 https://www.google.com permanent;n"
+line1="\\\n\trewrite ^/redirect_me$1 https://www.google.com permanent;\n"
 sed -i "53 i $line1" /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/error_404.html
 segment="\\\n\terror_page 404 /error_404.html;\n\tlocation = /error_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"

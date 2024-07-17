@@ -2,15 +2,14 @@
 # Install and configure HAProxy
 # shellcheck disable=SC2154
 
-sudo su
-apt-get update -y
+sudo apt-get update -y
 # apt-get install -y --no-install-recommends software-properties-common
 # add-apt-repository -y ppa:vbernat/haproxy-2.2
 # apt-get install -y haproxy=2.2.\*
-apt-get install -y haproxy
-echo "ENABLED=1" >> sudo /etc/default/haproxy
+sudo apt-get install -y haproxy
+sudo echo "ENABLED=1" >> sudo /etc/default/haproxy
 
-echo "
+sudo echo "
 frontend hbnbclone
     bind *:80
     option forwardfor
@@ -24,4 +23,4 @@ backend myservers
     option httpclose
 " >> /etc/haproxy/haproxy.cfg
 
-service haproxy start
+sudo service haproxy start
